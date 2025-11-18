@@ -78,11 +78,11 @@ resource "azurerm_virtual_network" "vnet_02" {
 */ 
 
 
-#1st resource
-resource "azurerm_resource_group" "demo-cpg02-01" {
-    name = "rg-demo-cpg02-01"
-    location = "south india"
-}
+# #1st resource
+# resource "azurerm_resource_group" "demo-cpg02-01" {
+#     name = "rg-demo-cpg02-01"
+#     location = "south india"
+# }
 
 #4th resource
 # This resource should be created after rg and storage account creation due to Application dependency
@@ -119,16 +119,16 @@ resource "azurerm_resource_group" "demo-cpg02-01" {
 # multi line comments     - /* */
 
 
-# Storage Account
-resource "azurerm_storage_account" "demo_stor_acc" {
-    name = var.sto_acc_name
-    resource_group_name = azurerm_resource_group.demo-cpg02-01.name
-    location = var.sto_location
-    account_tier = var.account_tier
-    account_replication_type = var.shabnam_account_replication_type
-    account_kind = var.account_kind
-    tags = var.tags
-}
+# # Storage Account
+# resource "azurerm_storage_account" "demo_stor_acc" {
+#     name = var.sto_acc_name
+#     resource_group_name = azurerm_resource_group.demo-cpg02-01.name
+#     location = var.sto_location
+#     account_tier = var.account_tier
+#     account_replication_type = var.shabnam_account_replication_type
+#     account_kind = var.account_kind
+#     tags = var.tags
+# }
 
 
 # resource "azurerm_virtual_network" "vnet_02" {

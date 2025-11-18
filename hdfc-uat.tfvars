@@ -1,0 +1,5 @@
+rg_name = "rg-hdfc-uat"
+hdfc_vm_name    = "hdfc-uat-vm01"
+nic_name    = "hdfc-uat-nic01"
+subscription_id = "0f87b7f3-b8ff-4c25-b09a-901f6869202e"
+hdfc_vm_size    = "Standard_B2ms_v4"

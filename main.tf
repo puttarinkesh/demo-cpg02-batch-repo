@@ -15,6 +15,10 @@ data "azurerm_subnet" "existing_subnet" {
   resource_group_name  = "MC_god-father-aks-app-demo_god-father-aks-app-cluster_eastus"
 }
 
+resource "azurerm_resource_group" "dev_rg" {
+  name = var.rg_name
+  location = var.location
+}
 
 resource "azurerm_network_interface" "nic" {
   name = var.nic_name
@@ -34,7 +38,7 @@ resource "azurerm_windows_virtual_machine" "hdfc_vm" {
   name = var.hdfc_vm_name
   location = data.azurerm_resource_group.existing_network_rg.location
   resource_group_name = data.azurerm_resource_group.existing_network_rg.name
-  size = var.hdfc_vm_size   #"Standard_D16a_v4"
+  size = var.hdfc_vm_size   
   admin_username = var.hdfc_vm_admin_username
   admin_password = var.hdfc_vm_admin_password
   network_interface_ids = [azurerm_network_interface.nic.id]
@@ -54,6 +58,8 @@ resource "azurerm_windows_virtual_machine" "hdfc_vm" {
   }
 
 }
+
+
 
 
 
