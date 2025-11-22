@@ -34,9 +34,9 @@ resource "azurerm_network_interface" "nic" {
 }
 
 
-resource "azurerm_windows_virtual_machine" "hdfc_vm" {
+resource "azurerm_windows_virtual_machine" "hdfc_vm" {  #I want two similar Virtual machines
   name = var.hdfc_vm_name
-  location = data.azurerm_resource_group.existing_network_rg.location
+  location = data.azurerm_resource_group.existing_network_rg.location #local.location
   resource_group_name = data.azurerm_resource_group.existing_network_rg.name
   size = var.hdfc_vm_size   
   admin_username = var.hdfc_vm_admin_username
@@ -46,7 +46,7 @@ resource "azurerm_windows_virtual_machine" "hdfc_vm" {
 
   os_disk {
     name = "${var.hdfc_vm_name}-rinkesh-os-disk" #"hdfc-dev-nic01-os-disk"
-    caching = "ReadWrite"
+    caching = local.caching #"ReadWrite"
     storage_account_type = var.hdfc_vm_storage_account_type
   }
   
@@ -60,6 +60,19 @@ resource "azurerm_windows_virtual_machine" "hdfc_vm" {
 }
 
 
+# resource "azurerm_vpn_gateway" "example" {
+#   name                = "example-vpng"
+#   location            = azurerm_resource_group.example.location
+#   resource_group_name = azurerm_resource_group.example.name
+#   virtual_hub_id      = azurerm_virtual_hub.example.id
+
+#   bgp_settings {
+#     asn = local.asn
+#     peer_weight = local.peer_weight
+#   }
+# }
 
 
+#East US 2
 
+#Meta Arguments

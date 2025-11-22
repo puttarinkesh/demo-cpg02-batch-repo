@@ -134,5 +134,15 @@ variable "hdfc_vm_size" {
 variable "hdfc_uat_vm_name" {
   type = string
   default = "hdfc-uat-vm01"
-  
 }
+
+
+locals {
+  location = "south india"
+  caching = "ReadWrite"
+  asn = "64004"
+  peer_weight = "100"
+}
+
+
+
