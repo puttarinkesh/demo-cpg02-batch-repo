@@ -76,3 +76,27 @@ resource "azurerm_windows_virtual_machine" "hdfc_vm" {  #I want two similar Virt
 #East US 2
 
 #Meta Arguments
+
+
+
+
+# Terraform Import
+# changing size of the VM
+# adding additiona disk
+# enabling features basd on the requirement
+
+
+
+#Importing a storage account
+# step1: Write the Terraform code for the resource
+# Step2: ensure you pass all the arguments according to the resource
+# step3: import the resource using import command
+
+# Terraform Import Command
+# terraform import "azurerm_storage_account.import_01" "/subscriptions/0f87b7f3-b8ff-4c25-b09a-901f6869202e/resourceGroups/god-father-aks-app-demo/providers/Microsoft.Storage/storageAccounts/inspirevideo"
+
+
+# /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount
+# /subscriptions/0f87b7f3-b8ff-4c25-b09a-901f6869202e/resourceGroups/god-father-aks-app-demo/providers/Microsoft.Storage/storageAccounts/inspirevideo
+
+

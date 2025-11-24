@@ -16,11 +16,11 @@ variable "demo_stor_acc_23_name" {
   default = "hdfc73652389hfk"
 }
 
-# variable "rg_name" {
-#   description = "rg name for straoge account"
-#   type = string
-#   default = "rg-demo-cpg02-01"
-# }
+variable "rg_name" {
+  description = "rg name for straoge account"
+  type = string
+  default = "rg-hdfc-dev" #"rg-demo-cpg02-01"
+}
 
 variable "sto_location" {
   type = string
@@ -57,11 +57,11 @@ variable "demo_stor_acc_23_location" {
   default = "west europe"
 }
 
-#RG variables
-variable "rg_name" {
-  description = "rg name"
-  type = string
-}
+# #RG variables
+# variable "rg_name" {
+#   description = "rg name"
+#   type = string
+# }
 
 variable "location" {
   type = string
@@ -74,6 +74,7 @@ variable "location" {
 variable "nic_name" {
   description = "(Required) The name of the Network Interface. Changing this forces a new resource to be created."
   type = string
+  default = "hdfc-dev-nic01"
 }
 
 variable "nic_name_ip_configuration" {
@@ -97,9 +98,10 @@ variable "hdfc_vm_storage_account_type" {
 variable "hdfc_vm_name" {
   description = "(Required) The name of the Windows Virtual Machine. Changing this forces a new resource to be created."
   type = string
+  default = "hdfc-dev-vm01"
 }
 variable "subscription_id" {
-  
+  default = "0f87b7f3-b8ff-4c25-b09a-901f6869202e"
 }
 variable "hdfc_vm_admin_password" {
   description = ""
@@ -110,7 +112,7 @@ variable "hdfc_vm_admin_password" {
 variable "hdfc_vm_size" {
   description = "vm size"
   type = string
-  # default = "Standard_DS2_v2"  #"Standard_D16a_v4"  #"Standard_B2as_v2"  #
+  default = "Standard_DS2_v2"  #"Standard_D16a_v4"  #"Standard_B2as_v2"  #
 }
 
 # variable "" {
