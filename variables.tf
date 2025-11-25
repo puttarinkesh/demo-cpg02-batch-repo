@@ -147,4 +147,26 @@ locals {
 }
 
 
+variable "env" {
+  description = "env"
+  type = string
+  default = "nonprod"
+}
 
+variable "postfix" {
+  description = "postfix"
+  type = string
+  default = "pilot"
+}
+
+variable "app" {
+  description = ""
+  type = string
+  default = "loans"
+}
+
+variable "rg_client_names" {
+  description = "for each values"
+  type = set(string)
+  default = ["hdfc", "icici", "axis"]
+}
