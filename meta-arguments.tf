@@ -64,53 +64,31 @@
 #   account_kind              = "BlockBlobStorage"  #"StorageV2" #
 # }
 
+# for_each code
+# resource "azurerm_resource_group" "bank_rgs" {
+#   for_each = {
+#   "hdfc" = "eastus",
+#   "axis" = "south india",
+#   "icici" = "west europe"
+# }
+#   name      = "${var.env}-${var.postfix}-${var.app}-${each.key}"
+#   location  = each.value
+# }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-resource "azurerm_resource_group" "bank_rgs" {
-  for_each = {
-  "hdfc" = "eastus",
-  "axis" = "south india",
-  "icici" = "west europe"
-}
-  name      = "${var.env}-${var.postfix}-${var.app}-${each.key}"
-  location  = each.value
-}
-
-#for_each chaining  -
-resource "azurerm_storage_account" "for_each_meta" {
-  for_each = {
-  "hdfc"  = "LRS",
-  "axis"  = "GRS",
-  "icici" = "ZRS"
-}
-  name                      = "pilotloans${each.key}"
-  resource_group_name       = azurerm_resource_group.bank_rgs[each.key].name
-  location                  = azurerm_resource_group.bank_rgs[each.key].location
-  account_tier              = "Standard"  #"Premium"  #
-  account_replication_type  = "${each.value}"
-  account_kind              = "BlockBlobStorage"  #"StorageV2" #
-}
+# #for_each chaining  -
+# resource "azurerm_storage_account" "for_each_meta" {
+#   for_each = {
+#   "hdfc"  = "LRS",
+#   "axis"  = "GRS",
+#   "icici" = "ZRS"
+# }
+#   name                      = "pilotloans${each.key}"
+#   resource_group_name       = azurerm_resource_group.bank_rgs[each.key].name
+#   location                  = azurerm_resource_group.bank_rgs[each.key].location
+#   account_tier              = "Standard"  #"Premium"  #
+#   account_replication_type  = "${each.value}"
+#   account_kind              = "BlockBlobStorage"  #"StorageV2" #
+# }
 
 
 # azurerm_storage_account.for_each_meta["hdfc"]
@@ -123,3 +101,57 @@ resource "azurerm_storage_account" "for_each_meta" {
 # azurerm_storage_account.for_each_meta["icici"]
 # azurerm_resource_group.bank_rgs["icici"]
 # azurerm_resource_group.bank_rgs["icici"]
+
+
+#life_cycle {} - meta argument
+  # - ignore_changes
+  # - prevent_destroy
+  # - create_before_destroy
+
+
+# - ignore_changes
+resource "azurerm_resource_group" "bank_rgs" {
+  name      = "${var.env}-${var.postfix}-${var.app}"
+  location  = "south india"
+}
+
+resource "azurerm_storage_account" "life_cycle_meta" {
+  name                      = "pilothdfccar${var.app}"
+  resource_group_name       = azurerm_resource_group.bank_rgs.name
+  location                  = azurerm_resource_group.bank_rgs.location
+  account_tier              = "Standard"  #"Premium"  #
+  account_replication_type  = "GRS"
+  account_kind              = "StorageV2" #"BlockBlobStorage"  #
+  public_network_access_enabled = false
+
+  # lifecycle {
+  #   ignore_changes = [
+  #     account_replication_type,
+  #     public_network_access_enabled
+  #   ]
+  # }
+
+  # lifecycle {
+  #   create_before_destroy = true
+  # }
+
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "azurerm_storage_account" "life_cycle_meta_02s" {
+  name                      = "pilothdfchome${var.app}"
+  resource_group_name       = azurerm_resource_group.bank_rgs.name
+  location                  = azurerm_resource_group.bank_rgs.location
+  account_tier              = "Standard"  #"Premium"  #
+  account_replication_type  = "GRS"
+  account_kind              = "StorageV2" #"BlockBlobStorage"  #
+  public_network_access_enabled = false
+}
+
+
+
+
+
