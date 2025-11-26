@@ -116,7 +116,7 @@ resource "azurerm_resource_group" "bank_rgs" {
 }
 
 resource "azurerm_storage_account" "life_cycle_meta" {
-  name                      = "pilothdfccar${var.app}"
+  name                      = "pilothdfcprecar${var.app}"
   resource_group_name       = azurerm_resource_group.bank_rgs.name
   location                  = azurerm_resource_group.bank_rgs.location
   account_tier              = "Standard"  #"Premium"  #
