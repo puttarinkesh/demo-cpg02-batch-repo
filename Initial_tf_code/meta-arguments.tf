@@ -137,7 +137,7 @@ resource "azurerm_storage_account" "life_cycle_meta" {
 
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
