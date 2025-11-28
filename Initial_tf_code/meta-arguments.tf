@@ -104,24 +104,24 @@
 
 
 #life_cycle {} - meta argument
-  # - ignore_changes
-  # - prevent_destroy
-  # - create_before_destroy
+# - ignore_changes
+# - prevent_destroy
+# - create_before_destroy
 
 
 # - ignore_changes
 resource "azurerm_resource_group" "bank_rgs" {
-  name      = "${var.env}-${var.postfix}-${var.app}"
-  location  = "south india"
+  name     = "${var.env}-${var.postfix}-${var.app}"
+  location = "south india"
 }
 
 resource "azurerm_storage_account" "life_cycle_meta" {
-  name                      = "pilothdfcprecar${var.app}"
-  resource_group_name       = azurerm_resource_group.bank_rgs.name
-  location                  = azurerm_resource_group.bank_rgs.location
-  account_tier              = "Standard"  #"Premium"  #
-  account_replication_type  = "GRS"
-  account_kind              = "StorageV2" #"BlockBlobStorage"  #
+  name                          = "pilothdfcprecar${var.app}"
+  resource_group_name           = azurerm_resource_group.bank_rgs.name
+  location                      = azurerm_resource_group.bank_rgs.location
+  account_tier                  = "Standard" #"Premium"  #
+  account_replication_type      = "GRS"
+  account_kind                  = "StorageV2" #"BlockBlobStorage"  #
   public_network_access_enabled = false
 
   # lifecycle {
@@ -142,12 +142,12 @@ resource "azurerm_storage_account" "life_cycle_meta" {
 }
 
 resource "azurerm_storage_account" "life_cycle_meta_02s" {
-  name                      = "pilothdfchome${var.app}"
-  resource_group_name       = azurerm_resource_group.bank_rgs.name
-  location                  = azurerm_resource_group.bank_rgs.location
-  account_tier              = "Standard"  #"Premium"  #
-  account_replication_type  = "GRS"
-  account_kind              = "StorageV2" #"BlockBlobStorage"  #
+  name                          = "pilothdfchome${var.app}"
+  resource_group_name           = azurerm_resource_group.bank_rgs.name
+  location                      = azurerm_resource_group.bank_rgs.location
+  account_tier                  = "Standard" #"Premium"  #
+  account_replication_type      = "GRS"
+  account_kind                  = "StorageV2" #"BlockBlobStorage"  #
   public_network_access_enabled = false
 }
 

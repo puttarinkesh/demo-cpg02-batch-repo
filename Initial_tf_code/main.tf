@@ -49,7 +49,7 @@
 #     caching = local.caching #"ReadWrite"
 #     storage_account_type = var.hdfc_vm_storage_account_type
 #   }
-  
+
 #   source_image_reference {
 #     publisher = "MicrosoftWindowsServer"
 #     offer     = "WindowsServer"

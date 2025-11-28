@@ -75,7 +75,7 @@ resource "azurerm_virtual_network" "vnet_02" {
   dns_servers = []
   private_endpoint_vnet_policies = "Disabled"
 }  end of the comment
-*/ 
+*/
 
 
 # #1st resource
