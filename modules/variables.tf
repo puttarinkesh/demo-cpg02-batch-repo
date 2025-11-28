@@ -13,11 +13,7 @@ variable "app" {
   type        = string
   default     = "loans"
 }
-variable "rg_client_names" {
-  description = "for each values"
-  type        = set(string)
-  default     = []
-}
+
 
 #NIC Variables 
 variable "nic_name" {
@@ -80,3 +76,17 @@ variable "private_ip_address_allocation" {
 #   type = string
 #   default = ""
 # }
+
+#Subnet Variables
+variable "subnet_name" {
+  description = "subnet name should be passed"
+  type = string
+}
+variable "virtual_network_name" {
+  description = "virtual_network_name"
+  type = string
+}
+variable "virtual_network_rg" {
+  description = "virtual_network_rg"
+  type = string
+}
