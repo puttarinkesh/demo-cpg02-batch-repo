@@ -19,7 +19,7 @@ module "dev_rg" {
 module "user_defined_vm" {
   source                         = "../modules/windows_virtual_machine"
   env                            = "prod"
-  postfix                        = "inventory"
+  postfix                        = "inve"
   app                            = "McD"
   location                       = "east us"
   subnet_name                    = "vm-subnet"
