@@ -1,5 +1,6 @@
-
+#Create a Resource Group
 resource "azurerm_resource_group" "dev_rg" {
+  # count    = var.deploy_resource_group == true ? 1 : 0
   name     = "rg-${var.env}-${var.postfix}-${var.app}"
   location = var.location
 }

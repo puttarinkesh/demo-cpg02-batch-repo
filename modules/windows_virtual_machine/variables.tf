@@ -86,3 +86,10 @@ variable "virtual_network_rg" {
   description = "virtual_network_rg"
   type        = string
 }
+
+variable "deploy_resource_group" {
+  description = "deploy_resource_group"
+  type = bool
+  default = true
+}
+
